@@ -1,24 +1,12 @@
-USE sales;
+-- Week 5 Database Assignment
 
 -- Question 1
-SELECT paymentDate, SUM(amount) AS total_amount
-FROM payments
-GROUP BY paymentDate
-ORDER BY paymentDate DESC
-LIMIT 5;
-
+DROP INDEX IdxPhone ON customers;
 -- Question 2
-SELECT customerName, country, AVG(creditLimit) AS average_credit_limit
-FROM customers
-GROUP BY customerName, country;
-
+CREATE USER 'bob'@'localhost'
+IDENTIFIED BY '_S$cu3r3!_';
 -- Question 3
-SELECT productCode, quantityOrdered,
-       SUM(priceEach * quantityOrdered) AS total_price
-FROM orderdetails
-GROUP BY productCode, quantityOrdered;
-
+GRANT INSERT ON sales.* TO 'bob'@'localhost';
 -- Question 4
-SELECT checkNumber, MAX(amount) AS highest_amount
-FROM payments
-GROUP BY checkNumber;
+ALTER USER 'bob'@'localhost'
+IDENTIFIED BY '_P$55!23_';
