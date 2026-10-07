@@ -1,21 +1,27 @@
--- Create the library management database if it does not already exist
+USE sales;
 
-CREATE DATABASE IF NOT EXISTS library_management;
+-- Question 1: Retrieve Payment Information
+SELECT checkNumber, paymentDate, amount
+FROM payments;
 
--- Select the database
+-- Question 2: Find Orders in Process
+SELECT orderDate, requiredDate, status
+FROM orders
+WHERE status = 'In Process'
+ORDER BY orderDate DESC;
 
-USE library_management;
+-- Question 3: Find Sales Representatives
+SELECT firstName, lastName, email
+FROM employees
+WHERE jobTitle = 'Sales Rep'
+ORDER BY employeeNumber DESC;
 
--- Create the books table if it does not already exist
+-- Question 4: Retrieve Office Information
+SELECT *
+FROM offices;
 
-CREATE TABLE IF NOT EXISTS books (
-
-    book_id INT PRIMARY KEY,
-
-    title VARCHAR(255),
-
-    author VARCHAR(255),
-
-    publication_year INT
-
-);
+-- Question 5: Retrieve the Five Cheapest Products
+SELECT productName, quantityInStock
+FROM products
+ORDER BY buyPrice ASC
+LIMIT 5;
